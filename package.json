@@ -1,0 +1,10 @@
+{
+  "name": "account-management-mobile-level-3",
+  "version": "0.0.1",
+  "scripts": {
+    "start:backend": "node_modules/.bin/account-management-api"
+  },
+  "dependencies": {
+    "@devskills/account-management-api": "^0.0.3"
+  }
+}

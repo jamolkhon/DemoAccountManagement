@@ -1,0 +1,118 @@
+openapi: 3.0.0
+info:
+  title: Account Management API
+  version: 1.0.0
+components:
+  schemas:
+    Amount:
+      type: object
+      properties:
+        account_id:
+          type: string
+          format: uuid
+        amount:
+          type: integer
+      required:
+        - account_id
+        - amount
+    Balance:
+      type: object
+      properties:
+        balance:
+          type: integer
+      required:
+        - amount
+  examples:
+    PositiveAmount:
+      value:
+        account_id: '0afd02d3-6c59-46e7-b7bc-893c5e0b7ac2'
+        amount: 7
+    NegativeAmount:
+      value:
+        account_id: '5ae0ef78-e902-4c40-9f53-8cf910587312'
+        amount: -4
+    PositiveBalance:
+      value:
+        balance: 10
+paths:
+  /amount:
+    post:
+      summary: Updates account balance with amount.
+      parameters:
+        - in: header
+          name: Transaction-Id
+          schema:
+            type: string
+            format: uuid
+          example: 'cf479136-0a5b-42ad-a16c-26d9eda3b4aa'
+          required: true
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/Amount'
+            examples:
+              PositiveAmount:
+                $ref: '#/components/examples/PositiveAmount'
+              NegativeAmount:
+                $ref: '#/components/examples/NegativeAmount'
+
+      responses:
+        '200':
+          description: Operation accepted.
+        '400':
+          description: Mandatory body parameters missing or have incorrect type.
+        '405':
+          description: Specified HTTP method not allowed.
+        '415':
+          description: Specified content type not allowed.
+
+  /balance/{account_id}:
+    get:
+      summary: Returns current account balance.
+      parameters:
+        - name: account_id
+          in: path
+          required: true
+          description: Account ID.
+          schema:
+            type: string
+            format: uuid
+          example: '5ba6e1b0-e3e7-483a-919a-a2fc17629a90'
+      responses:
+        '200':
+          description: Account balance.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Balance'
+              examples:
+                PositiveBalance:
+                  $ref: '#/components/examples/PositiveBalance'
+        '404':
+          description: Account not found.
+  /transaction/{transaction_id}:
+    get:
+      summary: Returns transaction details.
+      parameters:
+        - name: transaction_id
+          in: path
+          required: true
+          description: Transaction ID.
+          schema:
+            type: string
+            format: uuid
+          example: '023d2024-24bc-42c9-ab24-689eef6ea0f9'
+      responses:
+        '200':
+          description: Transaction details.
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Balance'
+              examples:
+                PositiveBalance:
+                  $ref: '#/components/examples/PositiveBalance'
+        '404':
+          description: Transaction not found
