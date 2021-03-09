@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    app:cardElevation="4dp"
+    app:cardUseCompatPadding="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_full">
+
+        <TextView
+            android:id="@+id/actionView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Pending withdrawal of $7 from 2b0e3b56-4e4a-4d08-acf9-db514628e0f1" />
+
+        <TextView
+            android:id="@+id/balanceView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_half"
+            tools:text="Current account balance: $37" />
+
+        <TextView
+            android:id="@+id/retryButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textStyle="bold"
+            android:textColor="#f00"
+            android:layout_marginTop="@dimen/spacing_half"
+            android:text="@string/failed_click_to_retry" />
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

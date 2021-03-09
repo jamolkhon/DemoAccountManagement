@@ -1,3 +1,12 @@
 <resources>
     <string name="app_name">AccMgm</string>
+    <string name="account_id">Account ID</string>
+    <string name="amount">Amount</string>
+    <string name="submit">Submit</string>
+    <string name="submitting">Submitting…</string>
+    <string name="historical_transactions">Historical transactions</string>
+    <string name="withdrew_n_from_x">Withdrew $%1$d from %2$s</string>
+    <string name="transferred_x_to_x">Transferred $%1$d to %2$s</string>
+    <string name="current_account_balance">Current account balance: $%d</string>
+    <string name="failed_click_to_retry">Failed! Click to retry</string>
 </resources>
